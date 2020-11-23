@@ -8,6 +8,7 @@ let timeThreshold = 500; // For 0.5 seconds;
 let lastClosedTime,
   continuous = false;
 let alarm = document.getElementById("alarm");
+let content = document.getElementById("content");
 let body = document.querySelector("body");
 
 (function($) {
@@ -32,6 +33,7 @@ let body = document.querySelector("body");
 
 //entry point :
 function main() {
+  document.getElementById("wrapper").style.setProperty("display", "none", "important");
   JEEFACETRANSFERAPI.init({
     canvasId: "canvas",
     NNCpath: "src/model/",
@@ -53,6 +55,7 @@ function main() {
 function successCallback() {
   // Call next frame
   document.getElementById("full-page-loader").style.display = "none";
+  document.getElementById("wrapper").style.setProperty("display", "flex", "important");
   nextFrame();
   // Add code after API is ready.
 }
@@ -66,17 +69,16 @@ function nextFrame() {
   let deltaTime = Date.now() - lastClosedTime;
   if (deltaTime > timeThreshold && continuous) {
     start_alarm();
-    // console.log("Alarm Called");
     body.style.background = "#f00";
+    content.id = "content-warn"
   } else {
     stop_alarm();
     body.style.background = "#fff";
+    content.id = "content"
   }
 
   if (JEEFACETRANSFERAPI.is_detected()) {
-    // Do something awesome with animation values
     let expressions = JEEFACETRANSFERAPI.get_morphTargetInfluences();
-    //**************************************************************************** */
     if (
       expressions[8] >= eyesClosedThreshold && // For left and right eye
       expressions[9] >= eyesClosedThreshold
@@ -88,14 +90,9 @@ function nextFrame() {
       continuous = false;
     }
 
-    // The API is detected
-    // console.log("Detected");
   } else {
-    // Tell the user that detection is off.
     continuous = false;
-    // console.log("Not Detected");
   }
-  // Replay frame
   requestAnimationFrame(nextFrame);
 }
 

@@ -176,5 +176,35 @@ footer div:nth-of-type(2) {
   background-repeat: repeat-x;
   background-size: contain;
   background-color: rgb(141, 210, 215);
-  
+  width: 100%;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#content-warn {
+  background-color: red;
+  width: 100%;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#canvas-container {
+  width: 100%;
+  text-align:center;
+}
+
+#canvas {
+  display: inline;
+  width: 80vw;
+  height: 80vh;
+}
+
+#padder {
+  height: 20vh
 }
