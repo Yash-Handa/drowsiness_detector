@@ -10,6 +10,26 @@ let lastClosedTime,
 let alarm = document.getElementById("alarm");
 let body = document.querySelector("body");
 
+(function($) {
+
+	"use strict";
+
+	var fullHeight = function() {
+
+		$('.js-fullheight').css('height', $(window).height());
+		$(window).resize(function(){
+			$('.js-fullheight').css('height', $(window).height());
+		});
+
+	};
+	fullHeight();
+
+	$('#sidebarCollapse').on('click', function () {
+      $('#sidebar').toggleClass('active');
+  });
+
+})(jQuery);
+
 //entry point :
 function main() {
   JEEFACETRANSFERAPI.init({
@@ -77,4 +97,18 @@ function nextFrame() {
   }
   // Replay frame
   requestAnimationFrame(nextFrame);
+}
+
+let input = document.getElementById("hrs");
+let submit = document.getElementById("sub");
+input.oninput = function(e) {
+  let hr = 2
+  hr = parseInt(e.target.value)
+  console.log(hr)
+
+  if (hr > 2 ) {
+    submit.disabled = false
+  } else {
+    submit.disabled = true
+  }
 }

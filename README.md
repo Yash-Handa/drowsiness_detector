@@ -6,5 +6,5 @@ This is a web app for detecting drowsiness while a driver is driving. It has bee
 
 - [Yash Handa](https://github.com/Yash-Handa)
 - [Rohit Kapoor](https://github.com/rohit-kapoor)
-- [Saurav Aggarwal](https://github.com)
-- [Rahul Goyal](https://github.com)
+- [Saurav Aggarwal](https://github.com/saurav2005)
+- [Rahul Goyal](https://github.com/rahulgoyal981)
